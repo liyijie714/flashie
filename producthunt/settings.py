@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = ''
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
