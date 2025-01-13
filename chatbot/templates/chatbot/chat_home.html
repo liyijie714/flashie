@@ -1,0 +1,657 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-3 border-end" style="height: 100vh; background-color: #f8f9fa;">
+            <div class="p-3">
+                <h4 class="mb-4" style="color: #333;">friends.ai</h4>
+                
+                <!-- Create Button -->
+                <button class="btn btn-light rounded-pill mb-4 w-100 text-start" 
+                        style="background-color: #f0f0f0; color: #333;"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#createCharacterModal">
+                    <i class="fas fa-plus me-2"></i> Create
+                </button>
+                
+                <!-- Model Selection -->
+                <div class="mb-4">
+                    <h6 class="mb-3" style="color: #666;">Model</h6>
+                    <select id="model-provider" class="form-select mb-3">
+                        <option value="openai">OpenAI</option>
+                        <option value="claude">Claude</option>
+                    </select>
+                    
+                    <div id="model-select-wrapper">
+                        <div id="openai-models">
+                            <select id="model-select" class="form-select mb-3">
+                                <option value="gpt-4">GPT-4</option>
+                                <option value="gpt-3.5-turbo">GPT-3.5</option>
+                            </select>
+                        </div>
+                        
+                        <div id="claude-models" style="display: none;">
+                            <select id="model-select" class="form-select mb-3">
+                                <option value="claude">Claude</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roles (without showing system role content) -->
+                <div class="mb-4">
+                    <h6 class="mb-3" style="color: #666;">Characters</h6>
+                    <select id="saved-roles" class="form-select">
+                        <option value="">Select a character</option>
+                        {% for role in user_roles %}
+                            <option value="{{ role.id }}" 
+                                    data-name="{{ role.role_name }}">
+                                {{ role.role_name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Hidden inputs for role data -->
+                <input type="hidden" id="role-name" value="">
+                <input type="hidden" id="assistant-role" value="">
+                
+                <!-- Discover Section -->
+                <div class="mb-4">
+                    <div class="d-flex align-items-center mb-3" style="color: #666;">
+                        <i class="fas fa-compass me-2"></i>
+                        <span>Discover</span>
+                    </div>
+                </div>
+                
+                <!-- Chats Section -->
+                <div>
+                    <h6 class="mb-3" style="color: #666;">Chats</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="col-md-9" style="background-color: white;">
+            <!-- Chat Header -->
+            <div class="border-bottom p-3" style="background-color: white;">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-link" style="color: #666;">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="ms-3">
+                            <h5 class="mb-0" id="current-role-display" style="color: #333;">{{ current_role_name }}</h5>
+                            <small style="color: #666;">By @{{ request.user.username }}</small>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-link" style="color: #666;">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                        <button class="btn btn-link" style="color: #666;">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div class="chat-messages p-4" id="chat-messages" style="height: calc(100vh - 180px); overflow-y: auto; background-color: white;">
+                <!-- AI Profile Card at the start -->
+                <div class="text-center mb-4">
+                    <div class="avatar-circle mx-auto mb-3">
+                        <span class="avatar-text">{{ current_role_name|first }}</span>
+                    </div>
+                    <h4 style="color: #333;">{{ current_role_name }}</h4>
+                </div>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="border-top p-3" style="position: fixed; bottom: 0; width: inherit; background-color: white;">
+                <form id="chat-form" class="d-flex align-items-center gap-2">
+                    <div class="flex-grow-1 position-relative">
+                        <input type="text" id="user-input" class="form-control rounded-pill" 
+                               placeholder="Message {{ current_role_name }}..."
+                               style="padding-right: 50px; border-color: #dee2e6;">
+                        <button type="submit" class="btn btn-link position-absolute end-0 top-50 translate-middle-y"
+                                style="color: #c56c5c;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-link" style="color: #666;">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createCharacterModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body px-4">
+                <div class="text-center mb-4">
+                    <div class="position-relative d-inline-block">
+                        <div class="avatar-circle mx-auto" style="width: 100px; height: 100px; cursor: pointer;">
+                            <span class="avatar-text">?</span>
+                        </div>
+                        <button class="btn btn-link position-absolute bottom-0 end-0" style="color: #c56c5c;">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <form id="create-character-form">
+                    <!-- Character Name -->
+                    <div class="mb-4">
+                        <label class="form-label">Character name</label>
+                        <input type="text" class="form-control" 
+                               placeholder="e.g. Albert Einstein"
+                               maxlength="20">
+                        <div class="text-end text-muted small">
+                            <span class="character-count">0</span>/20
+                        </div>
+                    </div>
+
+                    <!-- Tagline -->
+                    <div class="mb-4">
+                        <label class="form-label">Tagline</label>
+                        <input type="text" class="form-control" 
+                               placeholder="Add a short tagline of your Character"
+                               maxlength="50">
+                        <div class="text-end text-muted small">
+                            <span class="character-count">0</span>/50
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-4">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="4"
+                                 placeholder="How would your Character describe themselves?"
+                                 maxlength="500"></textarea>
+                        <div class="text-end text-muted small">
+                            <span class="character-count">0</span>/500
+                        </div>
+                    </div>
+
+                    <!-- Greeting -->
+                    <div class="mb-4">
+                        <label class="form-label">Greeting</label>
+                        <textarea class="form-control" rows="3"
+                                 placeholder="e.g. Hello, I am Albert. Ask me anything about my scientific contributions."
+                                 maxlength="2048"></textarea>
+                        <div class="text-end text-muted small">
+                            <span class="character-count">0</span>/2048
+                        </div>
+                    </div>
+
+                    <!-- Voice -->
+                    <div class="mb-4">
+                        <label class="form-label">Voice</label>
+                        <button type="button" class="btn btn-light w-100 text-start">
+                            Add
+                            <i class="fas fa-chevron-down float-end mt-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- More options -->
+                    <div class="mb-4">
+                        <button type="button" class="btn btn-link text-dark p-0" data-bs-toggle="collapse" data-bs-target="#moreOptions">
+                            More options
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </button>
+                        
+                        <div id="moreOptions" class="collapse mt-3">
+                            <!-- Visibility -->
+                            <div class="mb-3">
+                                <label class="form-label">Visibility</label>
+                                <button type="button" class="btn btn-light w-100 text-start">
+                                    Public
+                                    <i class="fas fa-chevron-down float-end mt-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add this to your role creation form -->
+                    <div class="mb-3">
+                        <label class="form-label">Profile Image</label>
+                        <input type="file" class="form-control" name="profile_image" accept="image/*">
+                    </div>
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary" style="background-color: #c56c5c; border-color: #c56c5c;">
+                            Create Character
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.avatar-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #c56c5c;  /* Coral/terracotta color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-text {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.chat-messages .message {
+    max-width: 80%;
+    margin-bottom: 1rem;
+}
+
+.user-message {
+    margin-left: auto;
+    background-color: #c56c5c;  /* Coral/terracotta color */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 15px 15px 0 15px;
+}
+
+.bot-message {
+    margin-right: auto;
+    background-color: #f0f2f5;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 15px 15px 15px 0;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.message-header .avatar-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c56c5c;  /* Coral/terracotta color */
+    color: white;
+    font-weight: bold;
+}
+
+/* Custom scrollbar */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #c56c5c;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #b15b4b;
+}
+</style>
+
+<!-- Add Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const apiKeyInput = document.getElementById('api-key');
+    const modelSelect = document.getElementById('model-select');
+    const savedRolesSelect = document.getElementById('saved-roles');
+    const apiKeyGroup = document.getElementById('api-key-group');
+    const openaiModels = document.getElementById('openai-models');
+    const claudeModels = document.getElementById('claude-models');
+    
+    // Remove LLAMA-related elements and keep OpenAI and Claude
+    function updateApiKeyVisibility() {
+        const selectedModel = modelSelect.value;
+        if (selectedModel.includes('gpt') || selectedModel.includes('claude')) {
+            apiKeyGroup.style.display = 'block';
+        } else {
+            apiKeyGroup.style.display = 'none';
+        }
+    }
+
+    function updateModelVisibility() {
+        const selectedProvider = document.getElementById('model-provider').value;
+        
+        // Hide all model groups first
+        openaiModels.style.display = 'none';
+        claudeModels.style.display = 'none';
+        
+        // Show the selected provider's models
+        if (selectedProvider === 'openai') {
+            openaiModels.style.display = 'block';
+            modelSelect.value = openaiModels.querySelector('option').value;
+        } else if (selectedProvider === 'claude') {
+            claudeModels.style.display = 'block';
+            modelSelect.value = claudeModels.querySelector('option').value;
+        }
+        
+        updateApiKeyVisibility();
+    }
+
+    // Event listeners
+    modelSelect.addEventListener('change', updateApiKeyVisibility);
+    document.getElementById('model-provider').addEventListener('change', updateModelVisibility);
+    
+    // Initial setup
+    updateModelVisibility();
+    updateApiKeyVisibility();
+    
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('user-input');
+    const messagesDiv = document.getElementById('chat-messages');
+    const modelType = document.getElementById('model-type');
+    const roleNameInput = document.getElementById('role-name');
+    const roleContentInput = document.getElementById('assistant-role');
+    const currentRoleDisplay = document.getElementById('current-role-display');
+
+    function getCurrentRoleName() {
+        return roleNameInput.value.trim() || "Assistant";
+    }
+
+    // Handle form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const message = input.value.trim();
+        const selectedRole = document.getElementById('saved-roles').value;
+        const modelTypeValue = modelType.value;
+        const modelId = modelTypeValue === 'llama' ? 
+            document.getElementById('llama-model-select').value :
+            document.getElementById('openai-model-select').value;
+        
+        if (!message || !selectedRole || !modelId) {
+            alert('Please select a role, model, and enter a message');
+            return;
+        }
+
+        // Add user message
+        addMessage('You', message, 'user-message');
+        input.value = '';
+
+        // Add loading message
+        const loadingDiv = addMessage(getCurrentRoleName(), 'Thinking...', 'bot-message');
+
+        try {
+            const response = await fetch('{% url "chatbot:send_message" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ 
+                    message: message,
+                    role_id: selectedRole,
+                    model_id: modelId,
+                    model_type: modelTypeValue
+                })
+            });
+
+            const data = await response.json();
+            loadingDiv.remove();
+
+            if (data.status === 'success') {
+                addMessage(getCurrentRoleName(), data.message, 'bot-message');
+            } else {
+                addMessage(getCurrentRoleName(), 'Sorry, there was an error processing your request.', 'bot-message');
+            }
+        } catch (error) {
+            loadingDiv.remove();
+            addMessage(getCurrentRoleName(), 'Sorry, there was an error processing your request.', 'bot-message');
+            console.error('Error:', error);
+        }
+    });
+
+    // Function to add a message to the chat
+    function addMessage(sender, text, className) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${className}`;
+        
+        if (className === 'bot-message') {
+            messageDiv.innerHTML = `
+                <div class="message-header">
+                    <div class="avatar-small">${sender[0]}</div>
+                    <strong>${sender}</strong>
+                </div>
+                <div class="message-content">
+                    ${text}
+                </div>
+            `;
+        } else {
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    ${text}
+                </div>
+            `;
+        }
+        
+        messagesDiv.appendChild(messageDiv);
+        messageDiv.scrollIntoView({ behavior: 'smooth' });
+        return messageDiv;
+    }
+
+    // Handle role selection
+    savedRolesSelect.addEventListener('change', async function() {
+        const selectedOption = this.options[this.selectedIndex];
+        if (selectedOption.value) {
+            roleNameInput.value = selectedOption.getAttribute('data-name');
+            roleContentInput.value = selectedOption.getAttribute('data-content');
+            currentRoleDisplay.textContent = selectedOption.getAttribute('data-name');
+            
+            // Clear current chat display
+            messagesDiv.innerHTML = '';
+            
+            // Load chat history for this role
+            try {
+                const response = await fetch(`/chat/api/get_chat_history/${selectedOption.value}/`);
+                const data = await response.json();
+                if (data.status === 'success') {
+                    data.history.forEach(msg => {
+                        addMessage(msg.sender, msg.content, 
+                                 msg.sender === 'user' ? 'user-message' : 'bot-message');
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading chat history:', error);
+            }
+        }
+    });
+
+    // Handle model type selection
+    modelType.addEventListener('change', function() {
+        if (this.value === 'llama') {
+            openaiModels.style.display = 'block';
+        } else {
+            openaiModels.style.display = 'none';
+        }
+    });
+
+    // Initialize chat history if available
+    if (savedRolesSelect.value) {
+        savedRolesSelect.dispatchEvent(new Event('change'));
+    }
+
+    // Get the create button and add click handler
+    const createButton = document.getElementById('createButton');
+    if (createButton) {
+        createButton.addEventListener('click', function() {
+            showCreateSection();
+        });
+    }
+
+    function showCreateSection() {
+        console.log('Showing create section'); // Debug log
+        document.getElementById('create-character-section').style.display = 'block';
+        document.getElementById('chat-section').style.display = 'none';
+    }
+
+    function showChatSection() {
+        console.log('Showing chat section'); // Debug log
+        document.getElementById('create-character-section').style.display = 'none';
+        document.getElementById('chat-section').style.display = 'block';
+    }
+
+    // Make functions available globally
+    window.showCreateSection = showCreateSection;
+    window.showChatSection = showChatSection;
+
+    // Character counter for all inputs
+    document.querySelectorAll('input, textarea').forEach(element => {
+        element.addEventListener('input', function() {
+            const counter = this.parentElement.querySelector('.character-count');
+            if (counter) {
+                counter.textContent = this.value.length;
+            }
+        });
+    });
+
+    // Initialize with the last used role
+    if (savedRolesSelect.value) {
+        const selectedOption = savedRolesSelect.options[savedRolesSelect.selectedIndex];
+        if (currentRoleDisplay) {
+            currentRoleDisplay.textContent = selectedOption.getAttribute('data-name');
+        }
+        
+        // Update hidden inputs
+        document.getElementById('role-name').value = selectedOption.getAttribute('data-name');
+        document.getElementById('assistant-role').value = selectedOption.getAttribute('data-content');
+    }
+
+    // Handle role selection changes
+    savedRolesSelect.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        if (selectedOption.value) {
+            if (currentRoleDisplay) {
+                currentRoleDisplay.textContent = selectedOption.getAttribute('data-name');
+            }
+            document.getElementById('role-name').value = selectedOption.getAttribute('data-name');
+            document.getElementById('assistant-role').value = selectedOption.getAttribute('data-content');
+        }
+    });
+
+    // Set default role if current_role_id is available
+    if ('{{ current_role_id }}') {
+        savedRolesSelect.value = '{{ current_role_id }}';
+        const selectedOption = savedRolesSelect.options[savedRolesSelect.selectedIndex];
+        if (currentRoleDisplay) {
+            currentRoleDisplay.textContent = selectedOption.getAttribute('data-name');
+        }
+    }
+
+    // Handle role selection changes
+    savedRolesSelect.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        if (selectedOption.value) {
+            if (currentRoleDisplay) {
+                currentRoleDisplay.textContent = selectedOption.getAttribute('data-name');
+            }
+            // Update chat interface with selected role
+            document.querySelector('.avatar-text').textContent = 
+                selectedOption.getAttribute('data-name')[0];
+            document.querySelector('h4').textContent = 
+                selectedOption.getAttribute('data-name');
+        }
+    });
+
+    function createRole(event) {
+        event.preventDefault();
+        
+        const formData = new FormData();
+        const roleData = {
+            name: document.getElementById('roleName').value,
+            tagline: document.getElementById('roleTagline').value,
+            description: document.getElementById('roleDescription').value,
+            greeting: document.getElementById('roleGreeting').value
+        };
+        
+        formData.append('data', JSON.stringify(roleData));
+        
+        const imageFile = document.querySelector('input[name="profile_image"]').files[0];
+        if (imageFile) {
+            formData.append('profile_image', imageFile);
+        }
+        
+        fetch('{% url "chatbot:create_role" %}', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCsrfToken(),
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                location.reload();
+            }
+        });
+    }
+
+    // Add this new code to handle the create character form submission
+    const createCharacterForm = document.getElementById('create-character-form');
+    createCharacterForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        
+        try {
+            const response = await fetch('{% url "chatbot:create_role" %}', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: formData
+            });
+
+            const data = await response.json();
+            if (data.status === 'success') {
+                // Add the new role to the dropdown
+                const savedRolesSelect = document.getElementById('saved-roles');
+                const newOption = document.createElement('option');
+                newOption.value = data.role.id;
+                newOption.setAttribute('data-name', data.role.role_name);
+                newOption.textContent = data.role.role_name;
+                savedRolesSelect.appendChild(newOption);
+                
+                // Close the modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('createCharacterModal'));
+                modal.hide();
+                
+                // Optionally select the newly created character
+                savedRolesSelect.value = data.role.id;
+                savedRolesSelect.dispatchEvent(new Event('change'));
+            } else {
+                alert('Error creating character: ' + data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error creating character');
+        }
+    });
+});
+</script>
+{% endblock %}

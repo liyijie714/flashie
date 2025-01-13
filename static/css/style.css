@@ -1,0 +1,16 @@
+/* Input placeholder styles */
+::placeholder {
+    color: #999 !important;
+    font-size: 0.95rem;
+}
+
+/* Custom focus styles */
+.form-control:focus {
+    border-color: #2E7D32;
+    box-shadow: none;
+}
+
+/* Smooth transitions */
+.btn, .form-control {
+    transition: all 0.3s ease;
+} 

@@ -39,7 +39,7 @@ def edit(request, product_id):
 def delete(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     product.delete()
-    return redirect('home')
+    return redirect('products:home')
 
 @login_required(login_url='/accounts/login')
 def upvote(request, product_id):

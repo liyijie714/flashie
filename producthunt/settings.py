@@ -40,7 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products',
     'accounts',
+    'grader',
+    'chatbot',
 ]
+
+import os
+
+# Add these settings
+LLAMA_MODEL_PATH = os.path.join(BASE_DIR, 'chatbot/llama', 'llama-2-7b.gguf') 
+USE_LLAMA = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'grader.context_processors.teacher_status',
             ],
         },
     },
@@ -102,8 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
+OPENAI_API_KEY = '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'
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -119,10 +127,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'producthunt/static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

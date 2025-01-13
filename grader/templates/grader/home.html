@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Code Grader</h2>
+    
+    <form method="POST" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="file" class="form-label">Upload Code File</label>
+            <input type="file" class="form-control" id="file" name="file" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Grade Submission</button>
+    </form>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} mt-3">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if grade_result %}
+        <div class="mt-4">
+            <h3>Grading Results:</h3>
+            <div class="card">
+                <div class="card-body">
+                    {{ grade_result|linebreaks }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %} 
