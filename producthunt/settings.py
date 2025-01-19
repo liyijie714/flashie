@@ -183,3 +183,17 @@ for dir_path in MEDIA_DIRS:
 FILE_UPLOAD_PERMISSIONS = 0o644
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
+
+# AWS Configuration
+AWS_ACCESS_KEY_ID = 'AKIASVLKCBYAW7GSTSUH'
+AWS_SECRET_ACCESS_KEY = '0JfWyjCaKa0rYh0vuI3ViJEnMAzQaFgNhfczZHyu'
+AWS_REGION_NAME = 'us-west-2'  # or your preferred region
+
+# # Optional: Store these in environment variables instead
+# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+# AWS_REGION_NAME = os.environ.get('AWS_REGION_NAME', 'us-west-2')
+
+# Polly Usage Limits
+POLLY_DAILY_CHAR_LIMIT = 100000  # Adjust based on your needs
+POLLY_RATE_LIMIT = 100  # Requests per hour

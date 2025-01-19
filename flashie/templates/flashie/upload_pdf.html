@@ -38,59 +38,72 @@
                         </div>
                     {% endif %}
                 </div>
+                <div class="mb-3">
+                    {{ form.voice.label_tag }}
+                    {{ form.voice }}
+                    {% if form.voice.errors %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form.voice.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    {{ form.speech_rate.label_tag }}
+                    {{ form.speech_rate }}
+                    {% if form.speech_rate.errors %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form.speech_rate.errors }}
+                        </div>
+                    {% endif %}
+                </div>
                 <button type="submit" class="btn btn-primary">Upload PDF</button>
             </form>
         </div>
     </div>
     
     <!-- User's Uploaded PDFs and Audiobooks -->
-    <h2>Your Uploaded PDFs and Audiobooks</h2>
-    {% if user_pdfs.exists %}
-        <div class="list-group">
-            {% for pdf in user_pdfs %}
-                <div class="list-group-item">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h5 class="mb-0">{{ pdf.pdf.name|basename }}</h5>
-                        <small class="text-muted">Uploaded: {{ pdf.uploaded_at|date:"M d, Y H:i" }}</small>
-                    </div>
-                    {% if pdf.audio %}
-                        <div class="mb-2">
-                            <small class="text-muted">Audio generated: {{ pdf.audio_generated_at|date:"M d, Y H:i" }}</small>
-                        </div>
-                        <div class="audio-player mb-3">
-                            <audio controls class="w-100">
-                                <source src="{{ pdf.audio.url }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </div>
-                        <div class="btn-group">
-                            <a href="{{ pdf.pdf.url }}" class="btn btn-outline-primary btn-sm" download>
-                                <i class="fas fa-file-pdf"></i> Download PDF
-                            </a>
-                            <a href="{{ pdf.audio.url }}" class="btn btn-outline-success btn-sm" download>
-                                <i class="fas fa-file-audio"></i> Download Audio
-                            </a>
-                        </div>
-                    {% else %}
-                        <p class="text-warning mb-0">Audio generation in progress...</p>
-                    {% endif %}
-                </div>
-            {% endfor %}
+    <div class="card">
+        <div class="card-header">
+            Your Uploaded PDFs and Audiobooks
         </div>
-    {% else %}
-        <p class="text-center mb-0">You have not uploaded any PDFs yet.</p>
-    {% endif %}
+        <div class="card-body">
+            {% if user_pdfs.exists %}
+                <div class="list-group">
+                    {% for pdf in user_pdfs %}
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="mb-0">{{ pdf.pdf.name|basename }}</h5>
+                                <small class="text-muted">Uploaded: {{ pdf.uploaded_at|date:"M d, Y H:i" }}</small>
+                            </div>
+                            {% if pdf.audio %}
+                                <div class="mb-2">
+                                    <small class="text-muted">Audio generated: {{ pdf.audio_generated_at|date:"M d, Y H:i" }}</small>
+                                </div>
+                                <div class="audio-player">
+                                    <audio controls class="w-100">
+                                        <source src="{{ pdf.audio.url }}" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            {% else %}
+                                <p class="text-warning mb-0">Audio generation in progress...</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-center mb-0">You have not uploaded any PDFs yet.</p>
+            {% endif %}
+        </div>
+    </div>
 </div>
-
-<!-- Add Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
     .audio-player {
         background: #f8f9fa;
         padding: 15px;
         border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin: 10px 0;
     }
     
     audio {
@@ -104,13 +117,13 @@
         padding: 20px;
     }
     
-    .btn-group {
-        gap: 10px;
+    .form-control {
+        margin-bottom: 10px;
     }
     
-    .btn-outline-primary:hover, .btn-outline-success:hover {
-        transform: translateY(-1px);
-        transition: transform 0.2s;
+    .btn-group {
+        display: flex;
+        gap: 10px;
     }
 </style>
 {% endblock %} 

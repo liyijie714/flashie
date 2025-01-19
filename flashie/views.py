@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, FileResponse, Http404
 from .models import Document, UploadedPDF
 from .forms import PDFUploadForm
-from .utils import extract_text_from_pdf, convert_text_to_speech
+from .utils import extract_text_from_pdf, convert_text_to_speech, convert_text_to_speech_polly
 import youtube_dl  # You'll need to install this package
 from django.utils import timezone
 from django.shortcuts import redirect
@@ -22,59 +22,64 @@ def upload_pdf(request):
         form = PDFUploadForm(request.POST, request.FILES)
         uploaded_pdf = None
         
-        logger.info(f"POST data: {request.POST}")
-        logger.info(f"FILES data: {request.FILES}")
-        
         if form.is_valid():
             try:
-                # Get the uploaded file
+                # Get form data
                 pdf_file = form.cleaned_data['pdf_file']
-                logger.info(f"Processing file: {pdf_file.name}")
+                voice_id = form.cleaned_data['voice']
+                speech_rate = form.cleaned_data['speech_rate']
                 
-                # Create the UploadedPDF instance
+                logger.info(f"Processing upload for file: {pdf_file.name}")
+                logger.info(f"Selected voice: {voice_id}")
+                logger.info(f"Selected speech rate: {speech_rate}")
+                
+                # Create the PDF record
                 uploaded_pdf = UploadedPDF.objects.create(
                     user=request.user,
-                    pdf=pdf_file
+                    pdf=pdf_file,
+                    voice_id=voice_id
                 )
-                logger.info(f"PDF saved to database. ID: {uploaded_pdf.id}")
-                logger.info(f"PDF file path: {uploaded_pdf.pdf.path}")
+                logger.info(f"Created UploadedPDF record with ID: {uploaded_pdf.id}")
                 
                 # Extract text from PDF
                 logger.info("Starting text extraction...")
-                pdf_path = uploaded_pdf.pdf.path
-                text = extract_text_from_pdf(pdf_path)
-                logger.info(f"Extracted text length: {len(text) if text else 0}")
+                text = extract_text_from_pdf(uploaded_pdf.pdf.path)
                 
                 if not text:
                     raise Exception("No text could be extracted from the PDF")
+                
+                logger.info(f"Extracted {len(text)} characters of text")
                 
                 # Generate audio filename
                 timestamp = timezone.now().strftime('%Y%m%d_%H%M%S')
                 audio_filename = f"audio_{uploaded_pdf.id}_{timestamp}.mp3"
                 logger.info(f"Generated audio filename: {audio_filename}")
                 
-                # Convert text to speech
+                # Convert text to speech using Polly
                 logger.info("Starting text-to-speech conversion...")
-                audio_relative_path = convert_text_to_speech(text, audio_filename)
-                logger.info(f"Audio saved to: {audio_relative_path}")
+                audio_relative_path = convert_text_to_speech_polly(
+                    text=text,
+                    output_filename=audio_filename,
+                    voice_id=voice_id,
+                    speech_rate=speech_rate
+                )
+                
+                logger.info(f"Audio generated successfully at: {audio_relative_path}")
                 
                 # Update the UploadedPDF instance
                 uploaded_pdf.audio = audio_relative_path
                 uploaded_pdf.audio_generated_at = timezone.now()
                 uploaded_pdf.save()
-                logger.info("UploadedPDF instance updated with audio information")
                 
-                # Update the success message to include more details
-                messages.success(
-                    request,
-                    f'Successfully processed "{pdf_file.name}". The audio file has been generated and is ready to play.'
-                )
+                logger.info("UploadedPDF record updated with audio information")
+                
+                messages.success(request, 'PDF uploaded and audio generated successfully!')
                 return redirect('flashie:upload_pdf')
                 
             except Exception as e:
                 logger.error(f"Error processing PDF: {str(e)}", exc_info=True)
                 if uploaded_pdf:
-                    logger.info(f"Deleting uploaded PDF due to error: {uploaded_pdf.id}")
+                    logger.info(f"Cleaning up failed upload: {uploaded_pdf.id}")
                     uploaded_pdf.delete()
                 messages.error(request, f"Error processing PDF: {str(e)}")
         else:

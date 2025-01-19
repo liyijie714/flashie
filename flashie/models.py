@@ -27,6 +27,7 @@ class UploadedPDF(models.Model):
     audio = models.FileField(upload_to=audio_upload_path, blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     audio_generated_at = models.DateTimeField(blank=True, null=True)
+    voice_id = models.CharField(max_length=50, default='Joanna')
 
     def __str__(self):
         return f"{self.user.username} - {os.path.basename(self.pdf.name)}"
