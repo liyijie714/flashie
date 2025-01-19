@@ -6,7 +6,7 @@ import youtube_dl  # You'll need to install this package
 
 @login_required
 def home(request):
-    return render(request, 'flahie/home.html')
+    return render(request, 'flashie/home.html')
 
 @login_required
 def upload_pdf(request):

@@ -42,7 +42,7 @@ document.getElementById('pdfUploadForm').addEventListener('submit', function(e) 
     e.preventDefault();
     const formData = new FormData(this);
     
-    fetch('{% url "flahie:upload_pdf" %}', {
+    fetch('{% url "flashie:upload_pdf" %}', {
         method: 'POST',
         body: formData,
         headers: {
@@ -67,7 +67,7 @@ document.getElementById('videoScriptForm').addEventListener('submit', function(e
     e.preventDefault();
     const formData = new FormData(this);
     
-    fetch('{% url "flahie:extract_video_script" %}', {
+    fetch('{% url "flashie:extract_video_script" %}', {
         method: 'POST',
         body: formData,
         headers: {
