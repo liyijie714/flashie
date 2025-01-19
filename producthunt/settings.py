@@ -110,8 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+OPENAI_API_KEY = ''
 
-OPENAI_API_KEY = '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'
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
