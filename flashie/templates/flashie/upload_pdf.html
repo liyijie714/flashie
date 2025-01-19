@@ -10,7 +10,10 @@
     {% if messages %}
         <div class="mb-4">
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             {% endfor %}
         </div>
     {% endif %}
@@ -21,9 +24,20 @@
             Upload a PDF
         </div>
         <div class="card-body">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" action="{% url 'flashie:upload_pdf' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <div class="mb-3">
+                    {{ form.pdf_file.label_tag }}
+                    {{ form.pdf_file }}
+                    {% if form.pdf_file.help_text %}
+                        <small class="form-text text-muted">{{ form.pdf_file.help_text }}</small>
+                    {% endif %}
+                    {% if form.pdf_file.errors %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form.pdf_file.errors }}
+                        </div>
+                    {% endif %}
+                </div>
                 <button type="submit" class="btn btn-primary">Upload PDF</button>
             </form>
         </div>
@@ -35,22 +49,68 @@
         <div class="list-group">
             {% for pdf in user_pdfs %}
                 <div class="list-group-item">
-                    <h5>{{ pdf.pdf.name|basename }}</h5>
-                    <p>Uploaded at: {{ pdf.uploaded_at }}</p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="mb-0">{{ pdf.pdf.name|basename }}</h5>
+                        <small class="text-muted">Uploaded: {{ pdf.uploaded_at|date:"M d, Y H:i" }}</small>
+                    </div>
                     {% if pdf.audio %}
-                        <p>Audio generated at: {{ pdf.audio_generated_at }}</p>
-                        <audio controls>
-                            <source src="{{ pdf.audio.url }}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
+                        <div class="mb-2">
+                            <small class="text-muted">Audio generated: {{ pdf.audio_generated_at|date:"M d, Y H:i" }}</small>
+                        </div>
+                        <div class="audio-player mb-3">
+                            <audio controls class="w-100">
+                                <source src="{{ pdf.audio.url }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="btn-group">
+                            <a href="{{ pdf.pdf.url }}" class="btn btn-outline-primary btn-sm" download>
+                                <i class="fas fa-file-pdf"></i> Download PDF
+                            </a>
+                            <a href="{{ pdf.audio.url }}" class="btn btn-outline-success btn-sm" download>
+                                <i class="fas fa-file-audio"></i> Download Audio
+                            </a>
+                        </div>
                     {% else %}
-                        <p>Audio not yet generated.</p>
+                        <p class="text-warning mb-0">Audio generation in progress...</p>
                     {% endif %}
                 </div>
             {% endfor %}
         </div>
     {% else %}
-        <p>You have not uploaded any PDFs yet.</p>
+        <p class="text-center mb-0">You have not uploaded any PDFs yet.</p>
     {% endif %}
 </div>
+
+<!-- Add Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+    .audio-player {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    audio {
+        width: 100%;
+    }
+    
+    .list-group-item {
+        margin-bottom: 15px;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: 8px !important;
+        padding: 20px;
+    }
+    
+    .btn-group {
+        gap: 10px;
+    }
+    
+    .btn-outline-primary:hover, .btn-outline-success:hover {
+        transform: translateY(-1px);
+        transition: transform 0.2s;
+    }
+</style>
 {% endblock %} 

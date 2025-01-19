@@ -6,5 +6,6 @@ app_name = 'flashie'
 urlpatterns = [
     path('', views.home, name='home'),
     path('upload/', views.upload_pdf, name='upload_pdf'),
-    path('extract-video-script/', views.extract_video_script, name='extract_video_script'),
+    path('audio/<int:pdf_id>/', views.serve_audio, name='serve_audio'),
+    path('pdf/<int:pdf_id>/', views.serve_pdf, name='serve_pdf'),
 ] 

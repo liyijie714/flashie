@@ -1,0 +1,338 @@
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /docs/5.3/assets/js/color-modes.js
+Not Found: /docs/5.3/assets/js/color-modes.js
+Form validation errors: <ul class="errorlist"><li>pdf<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /docs/5.3/assets/js/color-modes.js
+POST data: <QueryDict: {'csrfmiddlewaretoken': ['jRf93Z4sf3PZBmGxqJ6P5dBiuLkzcq0hui7Zg46YFL2eCYNCqsD4yzd3NbLoLaDB']}>
+FILES data: <MultiValueDict: {'pdf_file': [<InMemoryUploadedFile: Audio test.pdf (application/pdf)>]}>
+Form validation errors: <ul class="errorlist"><li>pdf<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /docs/5.3/assets/js/color-modes.js
+POST data: <QueryDict: {'csrfmiddlewaretoken': ['oNIAkfIGDgwDV6xQ9hcdHNzMW9yAyjJOzeAqxkKc3YJSWIEV90Jsa9bxfzZp73m8']}>
+FILES data: <MultiValueDict: {'pdf_file': [<InMemoryUploadedFile: Audio test.pdf (application/pdf)>]}>
+Processing file: Audio test.pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /docs/5.3/assets/js/color-modes.js
+POST data: <QueryDict: {'csrfmiddlewaretoken': ['sSQLK6aNd9IQvWjTnUpwt3rK4CNpjI6bDjIBXbcjDRV5wyqYnDWLWp3vn2eeSsJv']}>
+FILES data: <MultiValueDict: {'pdf_file': [<InMemoryUploadedFile: AudioTest.pdf (application/pdf)>]}>
+Processing file: AudioTest.pdf
+PDF saved to database. ID: 2
+PDF file path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest.pdf
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted text length: 52
+Generated audio filename: audio_2_20250119_223321.mp3
+Starting text-to-speech conversion...
+Starting text-to-speech conversion for file: audio_2_20250119_223321.mp3
+Audio directory ensured: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/audios
+Initializing gTTS...
+Saving audio to: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/audios/audio_2_20250119_223321.mp3
+Audio file saved successfully
+Returning relative path: audios/audio_2_20250119_223321.mp3
+Audio saved to: audios/audio_2_20250119_223321.mp3
+UploadedPDF instance updated with audio information
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/urls.py changed, reloading.
+Watching for file changes with StatReloader
+POST data: <QueryDict: {'csrfmiddlewaretoken': ['sSQLK6aNd9IQvWjTnUpwt3rK4CNpjI6bDjIBXbcjDRV5wyqYnDWLWp3vn2eeSsJv']}>
+FILES data: <MultiValueDict: {'pdf_file': [<InMemoryUploadedFile: AudioTest.pdf (application/pdf)>]}>
+Processing file: AudioTest.pdf
+PDF saved to database. ID: 3
+PDF file path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_E5KLfdr.pdf
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_E5KLfdr.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted text length: 52
+Generated audio filename: audio_3_20250119_223441.mp3
+Starting text-to-speech conversion...
+Starting text-to-speech conversion for file: audio_3_20250119_223441.mp3
+Audio directory ensured: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/audios
+Initializing gTTS...
+Saving audio to: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/audios/audio_3_20250119_223441.mp3
+Audio file saved successfully
+Returning relative path: audios/audio_3_20250119_223441.mp3
+Audio saved to: audios/audio_3_20250119_223441.mp3
+UploadedPDF instance updated with audio information
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /docs/5.3/assets/js/color-modes.js
+POST data: <QueryDict: {'csrfmiddlewaretoken': ['QsGOEeSvrgDkJMX4yCUmvDzDtru4aX141TyERjU1RYQzKo49ylrBYZboMRVTJHEo']}>
+FILES data: <MultiValueDict: {'pdf_file': [<InMemoryUploadedFile: AudioTest.pdf (application/pdf)>]}>
+Processing file: AudioTest.pdf
+PDF saved to database. ID: 4
+PDF file path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_SI2k3ND.pdf
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_SI2k3ND.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted text length: 52
+Generated audio filename: audio_4_20250119_223639.mp3
+Starting text-to-speech conversion...
+Starting text-to-speech conversion for file: audio_4_20250119_223639.mp3
+Audio directory ensured: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/audios
+Initializing gTTS...
+Saving audio to: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/audios/audio_4_20250119_223639.mp3
+Audio file saved successfully
+Returning relative path: audios/audio_4_20250119_223639.mp3
+Audio saved to: audios/audio_4_20250119_223639.mp3
+UploadedPDF instance updated with audio information
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 17, in home
+    return render(request, 'flashie/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'extract_video_script' not found. 'extract_video_script' is not a valid view function or pattern name.
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 17, in home
+    return render(request, 'flashie/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'extract_video_script' not found. 'extract_video_script' is not a valid view function or pattern name.
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 17, in home
+    return render(request, 'flashie/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'extract_video_script' not found. 'extract_video_script' is not a valid view function or pattern name.
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
