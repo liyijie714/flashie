@@ -27,12 +27,6 @@ env = environ.Env(
 # Read .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-# Debug prints (remove after debugging)
-print("BASE_DIR:", BASE_DIR)
-print("Env file path:", os.path.join(BASE_DIR, '.env'))
-print("Env file exists:", os.path.exists(os.path.join(BASE_DIR, '.env')))
-print("AWS_ACCESS_KEY_ID:", env('AWS_ACCESS_KEY_ID', default='Not found'))
-
 # Get environment variables
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
