@@ -12,22 +12,44 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Initialize environ
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+
+# Read .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# Debug prints (remove after debugging)
+print("BASE_DIR:", BASE_DIR)
+print("Env file path:", os.path.join(BASE_DIR, '.env'))
+print("Env file exists:", os.path.exists(os.path.join(BASE_DIR, '.env')))
+print("AWS_ACCESS_KEY_ID:", env('AWS_ACCESS_KEY_ID', default='Not found'))
+
+# Get environment variables
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l_^t%q3atj(7tei!y=+%@lbcl+#hep(-%4xj5eeh_*77upgk9g'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
-ALLOWED_HOSTS = []
+# AWS Configuration
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_REGION_NAME = env('AWS_REGION_NAME')
 
+# OpenAI Configuration
+OPENAI_API_KEY = env('OPENAI_API_KEY')
 
 # Application definition
 
@@ -110,7 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-OPENAI_API_KEY = ''
 
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -183,16 +204,6 @@ for dir_path in MEDIA_DIRS:
 FILE_UPLOAD_PERMISSIONS = 0o644
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
-
-# AWS Configuration
-AWS_ACCESS_KEY_ID = 'AKIASVLKCBYAW7GSTSUH'
-AWS_SECRET_ACCESS_KEY = '0JfWyjCaKa0rYh0vuI3ViJEnMAzQaFgNhfczZHyu'
-AWS_REGION_NAME = 'us-west-2'  # or your preferred region
-
-# # Optional: Store these in environment variables instead
-# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-# AWS_REGION_NAME = os.environ.get('AWS_REGION_NAME', 'us-west-2')
 
 # Polly Usage Limits
 POLLY_DAILY_CHAR_LIMIT = 100000  # Adjust based on your needs
