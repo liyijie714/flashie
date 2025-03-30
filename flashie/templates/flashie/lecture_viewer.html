@@ -1,0 +1,392 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="lecture-app">
+    <div class="app-content">
+        <!-- Main Content Area -->
+        <div class="content-wrapper">
+            <!-- Left Side - Lecture Slide -->
+            <div class="lecture-side">
+                <div class="section-header">
+                    <span>Lecture Slide</span>
+                </div>
+                <div class="slide-content">
+                    {% for slide in lecture.slides.all %}
+                        <div class="slide-section" data-slide="{{ slide.slide_number }}" {% if not forloop.first %}style="display: none;"{% endif %}>
+                            <div class="slide-box">
+                                {{ slide.content|linebreaks }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Right Side - Current Slide Notes -->
+            <div class="notes-side">
+                <div class="section-header">
+                    <span>Current Slide Notes</span>
+                    <div class="format-label">Plain Text</div>
+                </div>
+                <div class="notes-content" id="notes-container">
+                    {% for slide in lecture.slides.all %}
+                        <div class="note-section" data-slide="{{ slide.slide_number }}">
+                            {% if slide.annotation %}
+                                <div class="annotation">
+                                    <h4>Key Point:</h4>
+                                    <p>{{ slide.annotation }}</p>
+                                </div>
+                                <hr class="annotation-divider">
+                            {% endif %}
+                            <div class="full-notes">
+                                {{ slide.notes|linebreaks }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="bottom-section">
+            <!-- Controls -->
+            <div class="control-panel">
+                <div class="slide-controls">
+                    <button class="control-btn" onclick="previousSlide()">←</button>
+                    <span class="slide-number">1:{{ lecture.slides.count }}</span>
+                    <button class="control-btn" onclick="nextSlide()">→</button>
+                </div>
+            </div>
+
+            <!-- Notes Overview -->
+            <div class="notes-overview">
+                <div class="overview-header">
+                    <h3>All Slide Notes</h3>
+                </div>
+                <div class="overview-content">
+                    {% for slide in lecture.slides.all %}
+                        <div class="overview-card {% if forloop.first %}active{% endif %}" data-slide="{{ slide.slide_number }}">
+                            <div class="overview-card-header">
+                                <span class="slide-indicator">{{ slide.title }}</span>
+                                <button class="goto-btn" onclick="showSlide({{ slide.slide_number }})">Go to slide</button>
+                            </div>
+                            <div class="overview-card-content">
+                                {% if slide.annotation %}
+                                    <p class="overview-annotation">{{ slide.annotation }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.lecture-app {
+    background-color: #e8f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 98%;
+    height: 90vh;
+}
+
+.app-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding: 20px;
+    gap: 20px;
+    height: calc(70vh - 60px);  /* Adjust this value as needed */
+}
+
+.lecture-side {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+}
+
+.notes-side {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+}
+
+.section-header {
+    padding: 15px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slide-content, .notes-content {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+}
+
+.note-section {
+    padding: 20px;
+    display: none;
+}
+
+.note-section.active {
+    display: block;
+}
+
+.control-panel {
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+}
+
+.slide-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.slide-number {
+    font-size: 16px;
+    color: #666;
+}
+
+.format-label {
+    font-size: 14px;
+    color: #666;
+    background: #e8e8e8;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.no-content {
+    color: #999;
+    text-align: center;
+    padding: 20px;
+}
+
+iframe {
+    border: none;
+    background: white;
+    width: 100%;
+    height: 100%;
+}
+
+.annotation {
+    background-color: #f0f7ff;
+    border-left: 3px solid #007bff;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.annotation h4 {
+    color: #0056b3;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.annotation p {
+    margin: 0;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.annotation-divider {
+    margin: 15px 0;
+    border-top: 1px dashed #ddd;
+}
+
+.full-notes {
+    color: #444;
+    line-height: 1.6;
+}
+
+.bottom-section {
+    background: white;
+    border-top: 1px solid #ddd;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.notes-overview {
+    margin-top: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.overview-header {
+    margin-bottom: 15px;
+}
+
+.overview-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.overview-content {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.overview-card {
+    flex: 0 0 300px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.overview-card.active {
+    border-color: #007bff;
+    box-shadow: 0 0 0 1px #007bff;
+}
+
+.overview-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.slide-indicator {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
+.goto-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+    color: #007bff;
+    background: transparent;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.goto-btn:hover {
+    background: #007bff;
+    color: white;
+}
+
+.overview-annotation {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.slide-box {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin: 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide-content {
+    background: #f5f5f5;
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+</style>
+
+<script>
+let currentSlide = 1;
+let totalSlides = {{ lecture.slides.count }};
+
+function updateSlideNumber() {
+    document.querySelector('.slide-number').textContent = `${currentSlide}:${totalSlides}`;
+}
+
+function showSlide(slideNumber) {
+    // Update active state in overview cards
+    document.querySelectorAll('.overview-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    document.querySelector(`.overview-card[data-slide="${slideNumber}"]`).classList.add('active');
+
+    // Show current slide
+    document.querySelectorAll('.slide-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    const currentSlide = document.querySelector(`.slide-section[data-slide="${slideNumber}"]`);
+    if (currentSlide) {
+        currentSlide.style.display = 'block';
+    }
+
+    // Show current notes
+    document.querySelectorAll('.note-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    const currentSection = document.querySelector(`.note-section[data-slide="${slideNumber}"]`);
+    if (currentSection) {
+        currentSection.style.display = 'block';
+    }
+
+    // Update current slide number
+    currentSlide = slideNumber;
+    updateSlideNumber();
+}
+
+function nextSlide() {
+    if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlideNumber();
+        showSlide(currentSlide);
+    }
+}
+
+function previousSlide() {
+    if (currentSlide > 1) {
+        currentSlide--;
+        updateSlideNumber();
+        showSlide(currentSlide);
+    }
+}
+
+// Initialize first slide
+document.addEventListener('DOMContentLoaded', function() {
+    showSlide(1);
+});
+</script>
+{% endblock %} 

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Upload Lecture Materials</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.title.id_for_label }}" class="form-label">Lecture Title</label>
+                            {{ form.title }}
+                            {% if form.title.errors %}
+                                <div class="alert alert-danger">{{ form.title.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.presentation.id_for_label }}" class="form-label">Presentation</label>
+                            {{ form.presentation }}
+                            <small class="text-muted">Accepted formats: PDF, PPT, PPTX</small>
+                            {% if form.presentation.errors %}
+                                <div class="alert alert-danger">{{ form.presentation.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.script.id_for_label }}" class="form-label">Lecture Script</label>
+                            {{ form.script }}
+                            <small class="text-muted">Accepted formats: PDF, TXT, DOC, DOCX</small>
+                            {% if form.script.errors %}
+                                <div class="alert alert-danger">{{ form.script.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Upload Lecture</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

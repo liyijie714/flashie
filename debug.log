@@ -336,3 +336,1516 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'extract_video_script' not fo
 /Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/urls.py changed, reloading.
 Watching for file changes with StatReloader
 Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Processing upload for file: test.pdf
+Selected voice: Joanna
+Selected speech rate: medium
+Created UploadedPDF record with ID: 5
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/test_GSnN3CJ.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 465 characters
+Extracted 465 characters of text
+Generated audio filename: audio_5_20250120_004546.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Cleaning up failed upload: 5
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Processing upload for file: test.pdf
+Selected voice: Joanna
+Selected speech rate: medium
+Created UploadedPDF record with ID: 6
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/test_c5rKn2U.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 465 characters
+Extracted 465 characters of text
+Generated audio filename: audio_6_20250120_004925.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Cleaning up failed upload: 6
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Joanna
+Selected speech rate: medium
+Created UploadedPDF record with ID: 7
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_nENsHbb.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_7_20250120_005542.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (UnrecognizedClientException) when calling the SynthesizeSpeech operation: The security token included in the request is invalid.
+Cleaning up failed upload: 7
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Joanna
+Selected speech rate: medium
+Created UploadedPDF record with ID: 8
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_hSy45UW.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_8_20250120_005758.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.InvalidSsmlException: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Cleaning up failed upload: 8
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Joanna
+Selected speech rate: medium
+Created UploadedPDF record with ID: 9
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_jBzHq75.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_9_20250120_005857.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.InvalidSsmlException: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Cleaning up failed upload: 9
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Joanna
+Selected speech rate: medium
+Created UploadedPDF record with ID: 10
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_2xio5k5.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_10_20250120_010043.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.InvalidSsmlException: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Cleaning up failed upload: 10
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Joanna
+Selected speech rate: medium
+Created UploadedPDF record with ID: 11
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_UYgaRuM.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_11_20250120_010324.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Cleaning up failed upload: 11
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Danielle
+Selected speech rate: medium
+Created UploadedPDF record with ID: 12
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_XuskDKe.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_12_20250120_202500.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support the selected engine: standard
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support the selected engine: standard
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support the selected engine: standard
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support the selected engine: standard
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support the selected engine: standard
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support the selected engine: standard
+Cleaning up failed upload: 12
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Danielle
+Selected speech rate: medium
+Created UploadedPDF record with ID: 13
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_AkA7IT2.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_13_20250120_202616.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Cleaning up failed upload: 13
+Processing upload for file: AudioTest.pdf
+Selected voice: Danielle
+Selected speech rate: medium
+Created UploadedPDF record with ID: 14
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_IpEX47i.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_14_20250120_202657.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 128, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 154, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 158, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: This voice does not support one of the used SSML features
+Cleaning up failed upload: 14
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Danielle
+Selected speech rate: medium
+Created UploadedPDF record with ID: 15
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_qRjkxwJ.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_15_20250120_203612.mp3
+Starting text-to-speech conversion...
+Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Error in convert_text_to_speech_polly: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Error processing PDF: Failed to generate audio: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 126, in convert_text_to_speech_polly
+    response = polly_client.synthesize_speech(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.InvalidSsmlException: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 152, in convert_text_to_speech_polly
+    raise Exception(f"Polly API error: {str(e)}")
+Exception: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 60, in upload_pdf
+    audio_relative_path = convert_text_to_speech_polly(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py", line 156, in convert_text_to_speech_polly
+    raise Exception(f"Failed to generate audio: {str(e)}")
+Exception: Failed to generate audio: Polly API error: An error occurred (InvalidSsmlException) when calling the SynthesizeSpeech operation: Unsupported Neural feature
+Cleaning up failed upload: 15
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Danielle
+Selected speech rate: medium
+Created UploadedPDF record with ID: 16
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_7aMln2y.pdf
+Opening PDF file...
+PDF opened successfully. Number of pages: 1
+Processing page 1/1
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_16_20250120_203754.mp3
+Starting text-to-speech conversion...
+Successfully received response from Polly
+Saving audio to: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/audios/audio_16_20250120_203754.mp3
+Audio file saved successfully
+Audio generated successfully at: audios/audio_16_20250120_203754.mp3
+UploadedPDF record updated with audio information
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/utils.py changed, reloading.
+Watching for file changes with StatReloader
+Form validation errors: <ul class="errorlist"><li>voice<ul class="errorlist"><li>This field is required.</li></ul></li><li>speech_rate<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+Processing upload for file: AudioTest.pdf
+Selected voice: Gregory
+Selected speech rate: medium
+Created UploadedPDF record with ID: 17
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_9kfib2v.pdf
+Text extraction complete. Extracted 52 characters
+Extracted 52 characters of text
+Generated audio filename: audio_17_20250120_210058.mp3
+Starting text-to-speech conversion...
+Audio generated successfully at: audios/audio_17_20250120_210058.mp3
+UploadedPDF record updated with audio information
+Not Found: /favicon.ico
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Processing upload for file: AudioTest.pdf
+Selected voice: Danielle
+Selected speech rate: medium
+Created UploadedPDF record with ID: 18
+Starting text extraction...
+Starting text extraction from: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/pdfs/user_1/AudioTest_WjzmI86.pdf
+Text extraction complete. Extracted 52 characters
+Extracted text: This
+ 
+is
+ 
+to
+ 
+test
+ 
+the
+ 
+audio
+ 
+functionality.
+Extracted 52 characters of text
+Generated audio filename: audio_18_20250120_210536.mp3
+Starting text-to-speech conversion...
+Audio generated successfully at: audios/audio_18_20250120_210536.mp3
+UploadedPDF record updated with audio information
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/producthunt/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /lecture/uplaod
+Serving presentation for lecture 7
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_3WXIbJO.pdf
+Serving file with content type: application/pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Serving presentation for lecture 7
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_3WXIbJO.pdf
+Serving file with content type: application/pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Serving presentation for lecture 7
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_3WXIbJO.pdf
+Serving file with content type: application/pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+Serving presentation for lecture 8
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_M8lB5IB.pdf
+Serving file with content type: application/pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+Serving presentation for lecture 8
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_M8lB5IB.pdf
+Serving file with content type: application/pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+Serving presentation for lecture 8
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_M8lB5IB.pdf
+Serving file with content type: application/pdf
+Serving presentation for lecture 2
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_aem3Mb0.pdf
+Serving file with content type: application/pdf
+Serving presentation for lecture 2
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_aem3Mb0.pdf
+Serving file with content type: application/pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /lecture/2/view/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: flashie_lectureslide
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 199, in lecture_viewer
+    if not lecture.slides.exists() and lecture.script:
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 1288, in exists
+    return self.query.has_results(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/query.py", line 660, in has_results
+    return compiler.has_results()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1542, in has_results
+    return bool(self.execute_sql(SINGLE))
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: flashie_lectureslide
+Internal Server Error: /lecture/8/view/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: flashie_lectureslide
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 199, in lecture_viewer
+    if not lecture.slides.exists() and lecture.script:
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 1288, in exists
+    return self.query.has_results(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/query.py", line 660, in has_results
+    return compiler.has_results()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1542, in has_results
+    return bool(self.execute_sql(SINGLE))
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: flashie_lectureslide
+Watching for file changes with StatReloader
+Error processing script: FieldFile.open() got an unexpected keyword argument 'encoding'
+Internal Server Error: /lecture/8/view/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 200, in lecture_viewer
+    lecture.process_script()
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py", line 106, in process_script
+    with self.script.open('r', encoding='utf-8') as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: FieldFile.open() got an unexpected keyword argument 'encoding'
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py changed, reloading.
+Watching for file changes with StatReloader
+Serving presentation for lecture 8
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_M8lB5IB.pdf
+Serving file with content type: application/pdf
+Serving presentation for lecture 8
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_M8lB5IB.pdf
+Serving file with content type: application/pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Serving presentation for lecture 8
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_M8lB5IB.pdf
+Serving file with content type: application/pdf
+Serving presentation for lecture 2
+File path: /Users/yijieli/Documents/projects/producthunt-project/flashie/media/lectures/presentations/Lecture_3_Growth_aem3Mb0.pdf
+Serving file with content type: application/pdf
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /lecture/8/view/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: flashie_lectureslide.title
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 205, in lecture_viewer
+    return render(request, 'flashie/lecture_viewer.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 199, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: flashie_lectureslide.title
+Watching for file changes with StatReloader
+Internal Server Error: /lecture/8/view/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: flashie_lectureslide.title
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 205, in lecture_viewer
+    return render(request, 'flashie/lecture_viewer.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 199, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: flashie_lectureslide.title
+Internal Server Error: /lecture/8/view/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: flashie_lectureslide.title
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 205, in lecture_viewer
+    return render(request, 'flashie/lecture_viewer.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 199, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: flashie_lectureslide.title
+Watching for file changes with StatReloader
+Internal Server Error: /lecture/8/view/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: flashie_lectureslide.title
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 205, in lecture_viewer
+    return render(request, 'flashie/lecture_viewer.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 199, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: flashie_lectureslide.title
+Internal Server Error: /lecture/8/view/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: flashie_lectureslide.title
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yijieli/Documents/projects/producthunt-project/flashie/flashie/views.py", line 205, in lecture_viewer
+    return render(request, 'flashie/lecture_viewer.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 199, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: flashie_lectureslide.title
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' not found. 'home' is not a valid view function or pattern name.
+Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' not found. 'home' is not a valid view function or pattern name.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /favicon.ico

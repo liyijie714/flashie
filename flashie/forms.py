@@ -1,6 +1,7 @@
 from django import forms
 import boto3
 from django.conf import settings
+from .models import Lecture
 
 class PDFUploadForm(forms.Form):
     SPEECH_RATES = [
@@ -69,3 +70,25 @@ class PDFUploadForm(forms.Form):
             raise forms.ValidationError('File size must be under 10MB.')
         
         return pdf 
+
+class UploadPDFForm(forms.Form):
+    pdf_file = forms.FileField(
+        label='Select a PDF',
+        help_text='Max. 10 megabytes',
+        widget=forms.FileInput(attrs={'accept': 'application/pdf'})
+    ) 
+
+class LectureUploadForm(forms.ModelForm):
+    class Meta:
+        model = Lecture
+        fields = ['title', 'presentation', 'script']
+        widgets = {
+            'presentation': forms.FileInput(attrs={
+                'accept': '.pdf,.ppt,.pptx',
+                'class': 'form-control'
+            }),
+            'script': forms.FileInput(attrs={
+                'accept': '.pdf,.txt,.doc,.docx',
+                'class': 'form-control'
+            })
+        } 

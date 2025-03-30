@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-between mb-4">
+        <div class="col">
+            <h2>My Lectures</h2>
+        </div>
+        <div class="col text-end">
+            <a href="{% url 'flashie:upload_lecture' %}" class="btn btn-primary">Upload New Lecture</a>
+        </div>
+    </div>
+
+    {% if lectures %}
+        <div class="row">
+            {% for lecture in lectures %}
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ lecture.title }}</h5>
+                            <p class="card-text">
+                                <small class="text-muted">Uploaded on {{ lecture.created_at|date:"F d, Y" }}</small>
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ lecture.presentation.url }}" class="btn btn-outline-primary btn-sm">
+                                    Download Presentation
+                                </a>
+                                <a href="{{ lecture.script.url }}" class="btn btn-outline-secondary btn-sm">
+                                    Download Script
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            You haven't uploaded any lectures yet.
+        </div>
+    {% endif %}
+</div>
+{% endblock %} 

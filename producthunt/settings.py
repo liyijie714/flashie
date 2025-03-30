@@ -27,20 +27,25 @@ env = environ.Env(
 # Read .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
+print("BASE_DIR:", BASE_DIR)
+print("Env file path:", os.path.join(BASE_DIR, '.env'))
+print("Env file exists:", os.path.exists(os.path.join(BASE_DIR, '.env')))
+print("AWS_ACCESS_KEY_ID:", env('AWS_ACCESS_KEY_ID', default='Not found'))
+
 # Get environment variables
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
+DEBUG = env('DEBUG', default=True)
+
+# AWS Configuration
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_REGION_NAME = env('AWS_REGION_NAME')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
-
-# AWS Configuration
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-AWS_REGION_NAME = env('AWS_REGION_NAME')
 
 # OpenAI Configuration
 OPENAI_API_KEY = env('OPENAI_API_KEY')
@@ -189,6 +194,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_DIRS = [
     os.path.join(MEDIA_ROOT, 'pdfs'),
     os.path.join(MEDIA_ROOT, 'audios'),
+    os.path.join(MEDIA_ROOT, 'lectures/presentations'),
+    os.path.join(MEDIA_ROOT, 'lectures/scripts'),
 ]
 
 for dir_path in MEDIA_DIRS:

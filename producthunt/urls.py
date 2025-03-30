@@ -11,4 +11,8 @@ urlpatterns = [
     path('grader/', include('grader.urls')),
     path('chat/', include('chatbot.urls')),
     path('flashie/', include('flashie.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

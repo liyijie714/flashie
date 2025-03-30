@@ -1,15 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, FileResponse, Http404
-from .models import Document, UploadedPDF
-from .forms import PDFUploadForm
+from .models import Document, UploadedPDF, Lecture
+from .forms import PDFUploadForm, UploadPDFForm, LectureUploadForm
 from .utils import extract_text_from_pdf, convert_text_to_speech, convert_text_to_speech_polly
 import youtube_dl  # You'll need to install this package
 from django.utils import timezone
-from django.shortcuts import redirect
 from django.contrib import messages 
 import os
 import logging
+import uuid
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +45,7 @@ def upload_pdf(request):
                 # Extract text from PDF
                 logger.info("Starting text extraction...")
                 text = extract_text_from_pdf(uploaded_pdf.pdf.path)
+                logger.info(f"Extracted text: {text}")
                 
                 if not text:
                     raise Exception("No text could be extracted from the PDF")
@@ -141,4 +143,100 @@ def serve_pdf(request, pdf_id):
             return response
         raise Http404("PDF file not found")
     except UploadedPDF.DoesNotExist:
-        raise Http404("PDF not found") 
+        raise Http404("PDF not found")
+
+def upload_pdf_view(request):
+    if request.method == 'POST':
+        form = UploadPDFForm(request.POST, request.FILES)
+        if form.is_valid():
+            uploaded_pdf = form.save()
+            try:
+                # Extract text from PDF
+                text = extract_text_from_pdf(uploaded_pdf.pdf.path)
+                if not text:
+                    raise Exception("Extracted text is empty.")
+                
+                # Generate a unique filename for the audio
+                audio_filename = f"{uuid.uuid4()}.mp3"
+                
+                # Convert text to speech
+                audio_path = convert_text_to_speech_polly(text, audio_filename)
+                
+                # Save or process the audio path as needed
+                messages.success(request, "Audio generated successfully!")
+                # Example: You can attach the audio_path to the uploaded PDF model if needed
+            except Exception as e:
+                messages.error(request, f"Failed to generate audio: {str(e)}")
+                # Optionally, delete the uploaded PDF if audio generation fails
+                uploaded_pdf.delete()
+            return redirect('upload-success')  # Replace with your actual redirect target
+    else:
+        form = UploadPDFForm()
+    return render(request, 'upload_pdf.html', {'form': form})
+
+@login_required
+def upload_lecture(request):
+    if request.method == 'POST':
+        form = LectureUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            lecture = form.save(commit=False)
+            lecture.user = request.user
+            lecture.save()
+            return redirect('flashie:lecture_viewer', lecture_id=lecture.id)
+    else:
+        form = LectureUploadForm()
+    return render(request, 'flashie/upload_lecture.html', {'form': form})
+
+@login_required
+def lecture_list(request):
+    lectures = Lecture.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'flashie/lecture_list.html', {'lectures': lectures})
+
+@login_required
+def lecture_viewer(request, lecture_id):
+    lecture = get_object_or_404(Lecture, id=lecture_id, user=request.user)
+    
+    if not lecture.slides.exists() and lecture.script:
+        lecture.process_script()
+    
+    context = {
+        'lecture': lecture,
+    }
+    return render(request, 'flashie/lecture_viewer.html', context)
+
+@login_required
+def serve_lecture_file(request, lecture_id, file_type):
+    try:
+        lecture = get_object_or_404(Lecture, id=lecture_id, user=request.user)
+        logger.info(f"Serving {file_type} for lecture {lecture_id}")
+        
+        if file_type == 'presentation':
+            file_field = lecture.presentation
+        elif file_type == 'script':
+            file_field = lecture.script
+        else:
+            logger.error(f"Invalid file type: {file_type}")
+            raise Http404("Invalid file type")
+        
+        if not file_field:
+            logger.error("File field is empty")
+            raise Http404("File not found")
+        
+        file_path = file_field.path
+        logger.info(f"File path: {file_path}")
+        
+        if not os.path.exists(file_path):
+            logger.error(f"File does not exist at path: {file_path}")
+            raise Http404("File not found on disk")
+            
+        response = FileResponse(open(file_path, 'rb'))
+        content_type = 'application/pdf' if file_path.lower().endswith('.pdf') else 'application/octet-stream'
+        response['Content-Type'] = content_type
+        response['Content-Disposition'] = f'inline; filename="{os.path.basename(file_path)}"'
+        response['X-Frame-Options'] = 'SAMEORIGIN'
+        logger.info(f"Serving file with content type: {content_type}")
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error serving file: {str(e)}", exc_info=True)
+        raise Http404(f"Error serving file: {str(e)}") 

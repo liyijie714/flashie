@@ -3,6 +3,7 @@
 import django.db.models.deletion
 from django.conf import settings
 from django.db import migrations, models
+from django.contrib.auth.models import User
 
 
 class Migration(migrations.Migration):
@@ -10,10 +11,36 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('auth', '0012_alter_user_first_name_max_length'),
     ]
 
     operations = [
+        migrations.CreateModel(
+            name='Lecture',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('title', models.CharField(max_length=200)),
+                ('presentation', models.FileField(help_text='Accepted formats: PDF, PPT, PPTX', upload_to='lectures/presentations/')),
+                ('script', models.FileField(help_text='Accepted formats: PDF, TXT, DOC, DOCX', upload_to='lectures/scripts/')),
+                ('processed_script', models.TextField(blank=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='auth.user')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='LectureSlide',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('slide_number', models.IntegerField()),
+                ('title', models.CharField(blank=True, max_length=200)),
+                ('notes', models.TextField(blank=True)),
+                ('annotation', models.TextField(blank=True)),
+                ('lecture', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='slides', to='flashie.lecture')),
+            ],
+            options={
+                'ordering': ['slide_number'],
+            },
+        ),
         migrations.CreateModel(
             name='Document',
             fields=[
