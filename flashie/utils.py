@@ -10,6 +10,8 @@ import re
 from botocore.exceptions import ClientError, BotoCoreError
 from pdf2image import convert_from_path
 import pytesseract
+import nltk
+from nltk.tokenize import sent_tokenize
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +23,7 @@ def extract_text_from_pdf(pdf_path):
     try:
         from pdfminer.high_level import extract_text
         text = extract_text(pdf_path)
-        logger.info(f"Extracted text: {text}")
+        logger.info(f"********** Extracted text: {text}")
         if text.strip():
             return text.strip()
         else:
@@ -125,7 +127,8 @@ def format_text_to_ssml(text):
 
 def convert_text_to_speech_polly(text, output_filename, voice_id='Matthew', speech_rate='medium'):
     """
-    Converts text to speech using Amazon Polly with a news reporter style.
+    Converts text to speech using Amazon Polly with a podcast style.
+    Handles engine compatibility for different voices.
     """
     try:
         # Initialize Polly client
@@ -139,22 +142,56 @@ def convert_text_to_speech_polly(text, output_filename, voice_id='Matthew', spee
         audio_dir = os.path.join(settings.MEDIA_ROOT, 'audios')
         os.makedirs(audio_dir, exist_ok=True)
 
-        # Enhanced SSML for news reporter style without unsupported features
+        # Process text for more natural speech with better sentence detection
+        processed_text = regex_based_text_processing_minimal(text)
+        
+        # Simplified SSML with only widely supported features
         ssml_text = f"""<speak>
-            <prosody rate="{speech_rate}" pitch="+0%">
-                {html.escape(text)}
+            <prosody rate="{speech_rate}">
+                {processed_text}
             </prosody>
         </speak>"""
 
         logger.info(f"Generated SSML: {ssml_text}")
 
-        response = polly_client.synthesize_speech(
-            Text=ssml_text,
-            TextType='ssml',
-            OutputFormat='mp3',
-            VoiceId=voice_id,
-            Engine='neural'
-        )
+        # First try neural engine as it sounds better
+        try:
+            response = polly_client.synthesize_speech(
+                Text=ssml_text,
+                TextType='ssml',
+                OutputFormat='mp3',
+                VoiceId=voice_id,
+                Engine='neural'
+            )
+        except ClientError as e:
+            if "ValidationException" in str(e) and "SSML features" in str(e):
+                # If neural with SSML fails, try with plain text
+                logger.info("Neural engine with SSML failed, trying neural with plain text...")
+                response = polly_client.synthesize_speech(
+                    Text=text,
+                    OutputFormat='mp3',
+                    VoiceId=voice_id,
+                    Engine='neural'
+                )
+            else:
+                # If other error with neural, try standard engine
+                logger.info(f"Neural engine failed with error: {str(e)}, trying standard engine...")
+                # List of voices that work with standard engine
+                standard_compatible_voices = ['Joanna', 'Matthew', 'Salli', 'Justin', 'Kevin']
+                
+                # If current voice doesn't support standard, use a fallback
+                if "does not support the selected engine: standard" in str(e):
+                    fallback_voice = 'Matthew'  # Default fallback
+                    logger.info(f"Voice {voice_id} doesn't support standard engine, using {fallback_voice}")
+                    voice_id = fallback_voice
+                
+                response = polly_client.synthesize_speech(
+                    Text=ssml_text,
+                    TextType='ssml',
+                    OutputFormat='mp3',
+                    VoiceId=voice_id,
+                    Engine='standard'
+                )
 
         if "AudioStream" in response:
             audio_path = os.path.join(audio_dir, output_filename)
@@ -168,11 +205,129 @@ def convert_text_to_speech_polly(text, output_filename, voice_id='Matthew', spee
 
     except ClientError as e:
         logger.error(f"Polly API error: {str(e)}")
+        
+        # Last resort - try with plain text and Matthew voice on standard engine
+        try:
+            logger.info("Trying with plain text and Matthew voice as last resort...")
+            response = polly_client.synthesize_speech(
+                Text=text,
+                OutputFormat='mp3',
+                VoiceId='Matthew',
+                Engine='standard'
+            )
+            
+            if "AudioStream" in response:
+                audio_path = os.path.join(audio_dir, output_filename)
+                with open(audio_path, 'wb') as file:
+                    file.write(response['AudioStream'].read())
+                logger.info(f"Audio file saved with fallback method to {audio_path}")
+                return f"audios/{output_filename}"
+        except Exception as inner_e:
+            logger.error(f"Fallback attempt failed: {str(inner_e)}")
+        
         raise Exception(f"Polly API error: {str(e)}")
 
     except Exception as e:
         logger.error(f"Error in convert_text_to_speech_polly: {str(e)}")
         raise Exception(f"Failed to generate audio: {str(e)}")
+
+def regex_based_text_processing(text):
+    """
+    Fallback function that uses regex for sentence splitting when NLTK is unavailable.
+    """
+    import re
+    
+    # Clean up text by normalizing whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    # Use regex for sentence detection
+    # This pattern looks for end punctuation followed by space and capital letter
+    pattern = r'([.!?][\'")\]]*)\s+(?=[A-Z]|$)'
+    
+    # Split text into sentences
+    sentence_parts = []
+    last_end = 0
+    for match in re.finditer(pattern, text):
+        end = match.end()
+        sentence_parts.append(text[last_end:end])
+        last_end = end
+    
+    # Add any remaining text
+    if last_end < len(text):
+        sentence_parts.append(text[last_end:])
+    
+    # Process each sentence
+    processed_parts = []
+    for i, sentence in enumerate(sentence_parts):
+        # Add breathing pauses at commas, semicolons, colons, and dashes
+        sentence = re.sub(r'(,|;|:|—|-)\s+', r'\1<break time="250ms"/> ', sentence)
+        
+        # Add longer pause between sentences
+        processed_parts.append(f"{sentence}<break time='650ms'/>")
+    
+    # Combine the parts and escape HTML but preserve SSML tags
+    processed_text = " ".join(processed_parts)
+    
+    # Simple regex to preserve SSML tags
+    processed_text = re.sub(r'<break\s+time=[\'"](\d+)ms[\'"]/>', 
+                            lambda m: f"___BREAK_{m.group(1)}___", 
+                            processed_text)
+    
+    # Escape HTML
+    processed_text = html.escape(processed_text)
+    
+    # Restore SSML tags
+    processed_text = re.sub(r'___BREAK_(\d+)___', 
+                           lambda m: f'<break time="{m.group(1)}ms"/>', 
+                           processed_text)
+    
+    return processed_text
+
+def regex_based_text_processing_minimal(text):
+    """
+    Minimal text processing with only simple break tags.
+    """
+    import re
+    
+    # Clean up text by normalizing whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    # Use regex for sentence detection
+    # This pattern looks for end punctuation followed by space and capital letter
+    pattern = r'([.!?][\'")\]]*)\s+(?=[A-Z]|$)'
+    
+    # Split text into sentences
+    sentence_parts = []
+    last_end = 0
+    for match in re.finditer(pattern, text):
+        end = match.end()
+        sentence_parts.append(text[last_end:end])
+        last_end = end
+    
+    # Add any remaining text
+    if last_end < len(text):
+        sentence_parts.append(text[last_end:])
+    
+    # Process each sentence - only add breaks between sentences
+    processed_parts = []
+    for sentence in sentence_parts:
+        processed_parts.append(f"{html.escape(sentence)}<break time='500ms'/>")
+    
+    # Combine the parts
+    return " ".join(processed_parts)
+
+def insert_breaks_and_structure(text):
+    # Escape any XML special characters
+    escaped_text = html.escape(text)
+
+    # Insert SSML <break> tags after sentence-ending punctuation
+    escaped_text = re.sub(r'([.?!])', rf'\1<break time="{break_time_ms}"/>', escaped_text)
+
+    # Wrap each paragraph or sentence group with <p> tags
+    paragraphs = escaped_text.split('\n')
+    structured_text = ''.join([f"<p>{para.strip()}</p>" for para in paragraphs if para.strip()])
+
+    return structured_text
 
 def format_text_to_speech_ssml(text):
     """
@@ -263,4 +418,7 @@ def get_available_voices():
         raise Exception(f"Error fetching voices: {str(aws_error)}")
     except Exception as e:
         logger.error(f"Error fetching voices: {str(e)}")
-        raise Exception(f"Error fetching voices: {str(e)}") 
+        raise Exception(f"Error fetching voices: {str(e)}")
+
+# Download the necessary data (run once)
+nltk.download('punkt') 

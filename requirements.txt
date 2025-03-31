@@ -80,3 +80,4 @@ tzdata==2024.2
 urllib3==2.3.0
 wcwidth==0.2.13
 youtube-dl==2021.12.17
+nltk==3.8.1
